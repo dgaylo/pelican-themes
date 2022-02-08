@@ -215,6 +215,11 @@ to make the notebooks work.
 Set the `FAVICON` option in your `pelicanconf.py`. For example: `FAVICON =
 'images/favicon.png'`
 
+### WebP
+
+Set `USE_WEBP` to enable WebP and use [Modernizr](modernizr.com) to test if browser supports Webp. Supported images:
+- `BANNER` becomes `BANNER_WEBP` 
+
 ### Index page
 
 * If `DISPLAY_ARTICLE_INFO_ON_INDEX` is set to _True_, article info (date,

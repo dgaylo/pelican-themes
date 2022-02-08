@@ -1,7 +1,16 @@
 <style>
+	{% if USE_WEBP and BANNER_WEBP %}
+	.webp #banner{
+	    background-image:url("{{ SITEURL}}/{{ BANNER_WEBP }}");
+	}
+	.no-webp #banner{
+	    background-image:url("{{ SITEURL}}/{{ BANNER }}");
+	}
+	{% else %}
 	#banner{
 	    background-image:url("{{ SITEURL}}/{{ BANNER }}");
 	}
+	{% endif %}
 </style>
 
 <div id="banner">
