@@ -218,7 +218,8 @@ Set the `FAVICON` option in your `pelicanconf.py`. For example: `FAVICON =
 ### WebP
 
 Set `USE_WEBP` to enable WebP and use [Modernizr](modernizr.com) to test if browser supports Webp. Supported images:
-- `BANNER` becomes `BANNER_WEBP` 
+- `BANNER` becomes `BANNER_WEBP`
+- `AVATAR` becomes `AVATAR_WEBP`
 
 ### Index page
 
