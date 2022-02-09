@@ -60,7 +60,7 @@
     {% endif %}
 
     <!-- Font Awesome-->
-    <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous" async></script>
 
     <!-- Bootstrap -->
     {% if BOOTSTRAP_THEME %}
@@ -77,7 +77,7 @@
         <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/html4css1.css" rel="stylesheet">
     {% endif %}
     {% if TYPOGRIFY %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/typogrify.css" rel="stylesheet">
+        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/typogrify.css" rel="stylesheet" async>
     {% endif %}
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" type="text/css"/>
     {% if CUSTOM_CSS %}
