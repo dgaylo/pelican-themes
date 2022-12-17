@@ -64,12 +64,15 @@
 
     <!-- Bootstrap -->
     {% if BOOTSTRAP_THEME %}
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.{{ BOOTSTRAP_THEME }}.min.css" type="text/css"/>
+    {% assets filters="cssmin", output="css/style.min.css", "css/bootstrap."+BOOTSTRAP_THEME+".min.css","css/style.css","css/pygments/"+PYGMENTS_STYLE|default('native')+".css" %}
+    <link rel="stylesheet" href="{{SITEURL}}/{{ASSET_URL}}" type="text/css"/>
+    {% endassets %}
     {% else %}
-        <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" type="text/css"/>
+    {% assets filters="cssmin", output="css/style.min.css", "css/bootstrap.min.css","css/style.css","css/pygments/"+PYGMENTS_STYLE|default('native')+".css" %}
+    <link rel="stylesheet" href="{{SITEURL}}/{{ASSET_URL}}" type="text/css"/>
+    {% endassets %}
     {% endif %}
 
-    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
     {% if 'tipue_search' in PLUGINS %}
     <link href="{{ SITEURL}}/{{ THEME_STATIC_DIR }}/tipuesearch/tipuesearch.css" rel="stylesheet">
     {% endif %}
@@ -79,7 +82,6 @@
     {% if TYPOGRIFY %}
         <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/typogrify.css" rel="stylesheet" async>
     {% endif %}
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" type="text/css"/>
     {% if CUSTOM_CSS %}
         <link href="{{ SITEURL }}/{{ CUSTOM_CSS }}" rel="stylesheet">
     {% endif %}
