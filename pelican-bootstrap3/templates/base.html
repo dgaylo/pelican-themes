@@ -63,25 +63,14 @@
     <script src="https://kit.fontawesome.com/{{FONT_AWESOME_KIT}}.js" crossorigin="anonymous" defer></script>
 
     <!-- Bootstrap -->
-    {% if BOOTSTRAP_THEME %}
     {% assets filters="cssmin", output="css/style.min.css", 
-        "css/bootstrap."+BOOTSTRAP_THEME+".min.css",
+        "css/bootstrap."+BOOTSTRAP_THEME|default('default')+".min.css",
         "css/style.css",
         "css/pygments/"+PYGMENTS_STYLE|default('native')+".css",
         CUSTOM_CSS
     %}
     <link rel="stylesheet" href="{{SITEURL}}/{{ASSET_URL}}" type="text/css"/>
     {% endassets %}
-    {% else %}
-    {% assets filters="cssmin", output="css/style.min.css", 
-        "css/bootstrap.min.css",
-        "css/style.css",
-        "css/pygments/"+PYGMENTS_STYLE|default('native')+".css",
-        CUSTOM_CSS
-    %}
-    <link rel="stylesheet" href="{{SITEURL}}/{{ASSET_URL}}" type="text/css"/>
-    {% endassets %}
-    {% endif %}
 
     {% if 'tipue_search' in PLUGINS %}
     <link href="{{ SITEURL}}/{{ THEME_STATIC_DIR }}/tipuesearch/tipuesearch.css" rel="stylesheet">
