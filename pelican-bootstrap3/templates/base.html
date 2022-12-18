@@ -64,11 +64,19 @@
 
     <!-- Bootstrap -->
     {% if BOOTSTRAP_THEME %}
-    {% assets filters="cssmin", output="css/style.min.css", "css/bootstrap."+BOOTSTRAP_THEME+".min.css","css/style.css","css/pygments/"+PYGMENTS_STYLE|default('native')+".css" %}
+    {% assets filters="cssmin", output="css/style.min.css", 
+        "css/bootstrap."+BOOTSTRAP_THEME+".min.css",
+        "css/style.css",
+        "css/pygments/"+PYGMENTS_STYLE|default('native')+".css"
+    %}
     <link rel="stylesheet" href="{{SITEURL}}/{{ASSET_URL}}" type="text/css"/>
     {% endassets %}
     {% else %}
-    {% assets filters="cssmin", output="css/style.min.css", "css/bootstrap.min.css","css/style.css","css/pygments/"+PYGMENTS_STYLE|default('native')+".css" %}
+    {% assets filters="cssmin", output="css/style.min.css", 
+        "css/bootstrap.min.css",
+        "css/style.css",
+        "css/pygments/"+PYGMENTS_STYLE|default('native')+".css" 
+    %}
     <link rel="stylesheet" href="{{SITEURL}}/{{ASSET_URL}}" type="text/css"/>
     {% endassets %}
     {% endif %}
@@ -220,13 +228,24 @@
 
 {% include 'includes/footer.html' %}
 
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.min.js"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
-
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/respond.min.js"></script>
+{% if BANNER %}
+{% assets filters="closure_js", output="js/packed.js", 
+    "js/jquery.min.js",
+    "js/bootstrap.min.js",
+    "js/respond.min.js",
+    "js/bodypadding.js"
+%}
+<script src="{{ SITEURL }}/{{ASSET_URL}}"></script>
+{% endassets %}
+{% else %}
+{% assets filters="closure_js", output="js/packed.js", 
+    "js/jquery.min.js",
+    "js/bootstrap.min.js",
+    "js/respond.min.js"
+%}
+<script src="{{ SITEURL }}/{{ASSET_URL}}"></script>
+{% endassets %}
+{% endif %}
 
 {% if USE_WEBP %}
 <!-- Enable Modernizr -->
@@ -237,9 +256,6 @@
     <script src="{{ SITEURL }}/{{ CUSTOM_JS }}"></script>
 {% endif %}
 
-{% if BANNER %}
-    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bodypadding.js"></script>
-{% endif %}
 {% include 'includes/sidebar/github-js.html' %}
 {% include 'includes/disqus_script.html' %}
 {% include 'includes/piwik.html' %}
